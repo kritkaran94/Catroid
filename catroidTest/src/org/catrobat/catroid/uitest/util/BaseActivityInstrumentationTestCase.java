@@ -57,7 +57,6 @@ public abstract class BaseActivityInstrumentationTestCase<T extends Activity> ex
 		super.setUp();
 		systemAnimations = new SystemAnimations(getInstrumentation().getContext());
 		systemAnimations.disableAll();
-		solo = new Solo(getInstrumentation(), getActivity());
 		UiTestUtils.clearAllUtilTestProjects();
 		if (clazz.getSimpleName().equalsIgnoreCase(MainMenuActivity.class.getSimpleName())) {
 			UiTestUtils.createEmptyProject();
