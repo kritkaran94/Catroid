@@ -254,10 +254,12 @@ public class LookFragment extends ScriptActivityFragment implements OnLookEditLi
 				lookFromCameraUri = UtilCamera.getDefaultLookFromCameraUri(defLookName);
 			}
 		}
+
 		try {
 			lookDataList = ProjectManager.getInstance().getCurrentSprite().getLookDataList();
-		} catch (NullPointerException e){
-			Log.e(TAG, e.getMessage());
+		} catch (NullPointerException nullPointerException) {
+			Log.e(TAG, Log.getStackTraceString(nullPointerException));
+			lookDataList = new ArrayList<LookData>();
 		}
 
 		if (ProjectManager.getInstance().getCurrentSpritePosition() == 0) {
