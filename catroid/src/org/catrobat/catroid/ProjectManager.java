@@ -125,10 +125,8 @@ public final class ProjectManager implements OnLoadProjectCompleteListener, OnCh
 			}
 			throw new LoadingProjectException(context.getString(R.string.error_load_project));
 		} else if (project.getCatrobatLanguageVersion() > Constants.CURRENT_CATROBAT_LANGUAGE_VERSION) {
-			// TODO delete hack at next release Author Phillip Goriup
-			// added in release 0.9.13
-			// added because of undesired language update -> undoing language version 0.93
 			if (project.getCatrobatLanguageVersion() == 0.93f) {
+				// this was done because of insufficient error message in older program versions
 				project.setCatrobatLanguageVersion(0.92f);
 			} else {
 				project = oldProject;
@@ -148,11 +146,10 @@ public final class ProjectManager implements OnLoadProjectCompleteListener, OnCh
 				project.setScreenMode(ScreenModes.STRETCH);
 				checkNestingBrickReferences(false);
 			}
-			if (project.getCatrobatLanguageVersion() == 0.92f) {
-				project.setCatrobatLanguageVersion(0.93f);
+			if (project.getCatrobatLanguageVersion() == 0.92f || project.getCatrobatLanguageVersion() == 0.93f) {
+				//0.93 should be left out because it available unintentional for a day
 			}
-
-			//insert further conversions here
+			//insert further convertions here
 
 			checkNestingBrickReferences(true);
 			if (project.getCatrobatLanguageVersion() == Constants.CURRENT_CATROBAT_LANGUAGE_VERSION) {
