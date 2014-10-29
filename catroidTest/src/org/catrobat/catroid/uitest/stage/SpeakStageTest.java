@@ -48,28 +48,33 @@ import org.catrobat.catroid.uitest.util.BaseActivityInstrumentationTestCase;
 
 public class SpeakStageTest extends BaseActivityInstrumentationTestCase<ProjectActivity> {
 
-//	private final String testText = "Test test.";
-//	private final long byteLengthOfTestText = 44076L;
-//	private final File speechFileTestText = new File(Constants.TEXT_TO_SPEECH_TMP_PATH, Utils.md5Checksum(testText)
-//			+ Constants.TEXT_TO_SPEECH_EXTENSION);
-//
-//	private final String helloWorldText = "Hello World!";
-//	private final long byteLengthOfHelloWorldText = 47532L;
-//	private final File speechFileHelloWorlText = new File(Constants.TEXT_TO_SPEECH_TMP_PATH,
-//			Utils.md5Checksum(helloWorldText) + Constants.TEXT_TO_SPEECH_EXTENSION);
-//
-//	private final String simultaneousText = "Speaking simultaneously";
-//	private final long byteLengthOfSimultaneousText = 65196L;
-//	private final File speechFileSimultaneousText = new File(Constants.TEXT_TO_SPEECH_TMP_PATH,
-//			Utils.md5Checksum(simultaneousText) + Constants.TEXT_TO_SPEECH_EXTENSION);
-//
-//	private final String longText = "This is very very long long test text.";
-//	private final long byteLengthOfLongText = 99628L;
-//	private final File speechFileLongText = new File(Constants.TEXT_TO_SPEECH_TMP_PATH, Utils.md5Checksum(longText)
-//			+ Constants.TEXT_TO_SPEECH_EXTENSION);
-//
-//	private SoundManagerMock soundManagerMock;
-//
+	private final String testText = "Test test.";
+	private final long byteLengthOfTestText = 25804L;
+	private final File speechFileTestText = new File(Constants.TEXT_TO_SPEECH_TMP_PATH, Utils.md5Checksum(testText)
+			+ Constants.TEXT_TO_SPEECH_EXTENSION);
+
+	private final String helloWorldText = "Hello World!";
+	private final long byteLengthOfHelloWorldText = 47532L;
+	private final File speechFileHelloWorlText = new File(Constants.TEXT_TO_SPEECH_TMP_PATH,
+			Utils.md5Checksum(helloWorldText) + Constants.TEXT_TO_SPEECH_EXTENSION);
+
+	private final String nullText = "";
+	private final long byteLengthOfNullText = 44L;
+	private final File speechFileNullText = new File(Constants.TEXT_TO_SPEECH_TMP_PATH, Utils.md5Checksum(nullText)
+			+ Constants.TEXT_TO_SPEECH_EXTENSION);
+
+	private final String simultaneousText = "Speaking simultaneously";
+	private final long byteLengthOfSimultaneousText = 51404L;
+	private final File speechFileSimultaneousText = new File(Constants.TEXT_TO_SPEECH_TMP_PATH,
+			Utils.md5Checksum(simultaneousText) + Constants.TEXT_TO_SPEECH_EXTENSION);
+
+	private final String longText = "This is very very long long test text.";
+	private final long byteLengthOfLongText = 69644L;
+	private final File speechFileLongText = new File(Constants.TEXT_TO_SPEECH_TMP_PATH, Utils.md5Checksum(longText)
+			+ Constants.TEXT_TO_SPEECH_EXTENSION);
+
+	private SoundManagerMock soundManagerMock;
+
 	public SpeakStageTest() throws InterruptedException {
 		super(ProjectActivity.class);
 	}
