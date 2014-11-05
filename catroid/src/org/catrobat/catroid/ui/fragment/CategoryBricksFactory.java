@@ -89,7 +89,10 @@ import org.catrobat.catroid.content.bricks.SpeakBrick;
 import org.catrobat.catroid.content.bricks.StopAllSoundsBrick;
 import org.catrobat.catroid.content.bricks.TurnLeftBrick;
 import org.catrobat.catroid.content.bricks.TurnRightBrick;
+<<<<<<< HEAD
 import org.catrobat.catroid.content.bricks.UserBrick;
+=======
+>>>>>>> adapt StageTestComplex to work for different screen sizes
 import org.catrobat.catroid.content.bricks.VibrationBrick;
 import org.catrobat.catroid.content.bricks.WaitBrick;
 import org.catrobat.catroid.content.bricks.WhenBrick;
@@ -255,6 +258,7 @@ public class CategoryBricksFactory {
 
 	private List<Brick> setupLooksCategoryList() {
 		List<Brick> looksBrickList = new ArrayList<Brick>();
+<<<<<<< HEAD
 		looksBrickList.add(new SetLookBrick());
 		looksBrickList.add(new NextLookBrick());
 		looksBrickList.add(new SetSizeToBrick(BrickValues.SET_SIZE_TO));
@@ -269,6 +273,25 @@ public class CategoryBricksFactory {
 		if (BuildConfig.FEATURE_LED_BRICK_ENABLED) {
 			looksBrickList.add(new LedOffBrick());
 			looksBrickList.add(new LedOnBrick());
+=======
+		looksBrickList.add(new SetLookBrick(sprite));
+		looksBrickList.add(new NextLookBrick(sprite));
+		looksBrickList.add(new SetSizeToBrick(sprite, BrickValues.SET_SIZE_TO));
+		looksBrickList.add(new ChangeSizeByNBrick(sprite, BrickValues.CHANGE_SIZE_BY));
+		looksBrickList.add(new HideBrick(sprite));
+		looksBrickList.add(new ShowBrick(sprite));
+		looksBrickList.add(new SetGhostEffectBrick(sprite, BrickValues.SET_GHOST_EFFECT));
+		looksBrickList.add(new ChangeGhostEffectByNBrick(sprite, BrickValues.CHANGE_GHOST_EFFECT));
+		looksBrickList.add(new SetBrightnessBrick(sprite, BrickValues.SET_BRIGHTNESS_TO));
+		looksBrickList.add(new ChangeBrightnessByNBrick(sprite, BrickValues.CHANGE_BRITHNESS_BY));
+		looksBrickList.add(new ClearGraphicEffectBrick(sprite));
+		if (BuildConfig.FEATURE_LED_BRICK_ENABLED) {
+			looksBrickList.add(new LedOffBrick(sprite));
+			looksBrickList.add(new LedOnBrick(sprite));
+		}
+		if (BuildConfig.FEATURE_VIBRATION_BRICK_ENABLED) {
+			looksBrickList.add(new VibrationBrick(sprite, BrickValues.VIBRATE_MILLISECONDS));
+>>>>>>> adapt StageTestComplex to work for different screen sizes
 		}
 
 		return looksBrickList;
