@@ -114,12 +114,7 @@ public class SpeakStageTest extends BaseActivityInstrumentationTestCase<ProjectA
 		}
 		UiTestUtils.clickOnBottomBar(solo, R.id.button_play);
 		solo.waitForActivity(StageActivity.class);
-		solo.sleep(3000);
 
-		byteLengthOfLongText = speechFileLongText.length();
-		byteLengthOfSimultaneousText = speechFileSimultaneousText.length();
-		byteLengthOfTestText = speechFileTestText.length();
-		byteLengthOfHelloWorldText = speechFileHelloWorldText.length();
 	}
 
 	@Device
@@ -128,18 +123,20 @@ public class SpeakStageTest extends BaseActivityInstrumentationTestCase<ProjectA
 		prepareStageForTesting(UiTestUtils.PROJECTNAME1);
 
 		assertTrue("speechFileTestText does not exist", speechFileTestText.exists());
-		//assertFalse("speechFileHelloWorlText already created", speechFileHelloWorldText.exists());
-		assertEquals("Length of speechFileTestText is different from original", byteLengthOfTestText,
-				speechFileTestText.length());
+		assertFalse("speechFileHelloWorlText already created", speechFileHelloWorldText.exists());
+		assertTrue("Length of speechFileTestText is 0",speechFileTestText.length() > byteLengthOfTestText);
 
-		//assertEquals("Wrong amount of soundfiles played", 1, soundManagerMock.playedSoundFiles.size());
+		byteLengthOfTestText = speechFileTestText.length();
+
+		assertEquals("Wrong amount of soundfiles played", 1, soundManagerMock.playedSoundFiles.size());
 		assertTrue("Wrong soundfile played",
 				soundManagerMock.playedSoundFiles.contains(speechFileTestText.getAbsolutePath()));
 
 		solo.sleep(2000);
 
 		assertTrue("speechFileHelloWorlText does not exist", speechFileHelloWorldText.exists());
-		assertEquals("Length of speechFileHelloWorldText is different from original", byteLengthOfHelloWorldText,
+		assertTrue("Length of speechFileTestText is 0",speechFileHelloWorldText.length() > byteLengthOfHelloWorldText);
+		assertFalse("Length of speechFileHelloWorldText is not different from first test filse", byteLengthOfTestText ==
 				speechFileHelloWorldText.length());
 
 		assertEquals("Wrong amount of soundfiles played", 2, soundManagerMock.playedSoundFiles.size());
@@ -156,10 +153,11 @@ public class SpeakStageTest extends BaseActivityInstrumentationTestCase<ProjectA
 		assertTrue("speechFileLongText does not exist", speechFileLongText.exists());
 		assertTrue("speechFileSimultaneousText does not exist", speechFileSimultaneousText.exists());
 
-		assertEquals("Length of speechFileLongText is different from original", byteLengthOfLongText,
-				speechFileLongText.length());
-		assertEquals("Length of speechFileSimultaneousText is different from original", byteLengthOfSimultaneousText,
-				speechFileSimultaneousText.length());
+		assertTrue("Length of speechFileSimultaneousText is 0", speechFileSimultaneousText.length() > byteLengthOfSimultaneousText);
+		byteLengthOfSimultaneousText = speechFileSimultaneousText.length();
+		assertTrue("Length of speechFileLongText is 0", speechFileLongText.length() > byteLengthOfLongText);
+		assertTrue("Length of speechFileLongText is shorter than SimultaneousText", speechFileLongText.length() > byteLengthOfSimultaneousText);
+
 
 		solo.sleep(1000);
 
