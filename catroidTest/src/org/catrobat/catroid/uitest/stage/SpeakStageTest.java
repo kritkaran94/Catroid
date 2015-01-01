@@ -123,7 +123,7 @@ public class SpeakStageTest extends BaseActivityInstrumentationTestCase<ProjectA
 		prepareStageForTesting(UiTestUtils.PROJECTNAME1);
 
 		assertTrue("speechFileTestText does not exist", speechFileTestText.exists());
-		assertFalse("speechFileHelloWorlText already created", speechFileHelloWorldText.exists());
+		assertFalse("speechFileHelloWorldText already created", speechFileHelloWorldText.exists());
 		assertTrue("Length of speechFileTestText is 0",speechFileTestText.length() > byteLengthOfTestText);
 
 		byteLengthOfTestText = speechFileTestText.length();
@@ -136,12 +136,19 @@ public class SpeakStageTest extends BaseActivityInstrumentationTestCase<ProjectA
 
 		assertTrue("speechFileHelloWorlText does not exist", speechFileHelloWorldText.exists());
 		assertTrue("Length of speechFileTestText is 0",speechFileHelloWorldText.length() > byteLengthOfHelloWorldText);
-		assertFalse("Length of speechFileHelloWorldText is not different from first test filse", byteLengthOfTestText ==
+		assertFalse("Length of speechFileHelloWorldText is not different from first test file", byteLengthOfTestText ==
 				speechFileHelloWorldText.length());
 
 		assertEquals("Wrong amount of soundfiles played", 2, soundManagerMock.playedSoundFiles.size());
 		assertTrue("Wrong soundfile played",
 				soundManagerMock.playedSoundFiles.contains(speechFileHelloWorldText.getAbsolutePath()));
+	}
+
+	public void testIfSondfilesAreReused () {
+		prepareStageForTesting(UiTestUtils.PROJECTNAME1);
+		assertTrue("speechFileTestText does not exist", speechFileTestText.exists());
+		assertTrue("Wrong soundfile played",
+				soundManagerMock.playedSoundFiles.contains(speechFileTestText.getAbsolutePath()));
 	}
 
 	@Device
@@ -170,7 +177,6 @@ public class SpeakStageTest extends BaseActivityInstrumentationTestCase<ProjectA
 
 	@Device
 	public void testDeleteSpeechFiles() {
-
 
 		createMultiSpeechesProject();
 		prepareStageForTesting(UiTestUtils.PROJECTNAME3);
