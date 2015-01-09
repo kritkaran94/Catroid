@@ -59,8 +59,8 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"     
+        android:icon="@drawable/icon"
+        android:label="Galaxy War"     
         android:name=".CatroidApplication" 
         android:theme="@style/Theme.Catroid" >
         <activity
